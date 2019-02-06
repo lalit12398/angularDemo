@@ -23,13 +23,22 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/custom.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {
-            "production": {
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
+            "prod": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -61,8 +70,11 @@
             "browserTarget": "AngularDemo:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "AngularDemo:build:production"
+            "qa": {
+              "browserTarget": "AngularDemo:build:qa"
+            },
+            "prod": {
+              "browserTarget": "AngularDemo:build:prod"
             }
           }
         },
