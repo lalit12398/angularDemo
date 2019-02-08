@@ -1,3 +1,41 @@
-<p>
-  Header
-</p>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-6 offset-3">
+      <form name="userForm" #f="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+          <div class="col-sm-10">
+            <input type="text" [ngClass]="{'error' : f.submitted && !username.valid, 'success' : f.submitted && username.valid}" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
+            <div *ngIf="f.submitted && !username.valid" class="text-danger">Username is required.</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+            <div *ngIf="f.submitted && !password.valid" class="text-danger">Please enter a valid password.</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <select name="city" [(ngModel)]="city" (ngModelChange) = "onSubmit()" #c="ngModel" class="form-control" required>
+              <option value="">Select</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Noida">Noida</option>
+              <option value="Sonipat">Sonipat</option>
+              <option value="Bhopal">Bhopal</option>
+              <option value="Mumbai">Mumbai</option>
+            </select>
+            <div *ngIf="f.submitted && !c.valid" class="text-danger">Please select city.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="text-right">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
