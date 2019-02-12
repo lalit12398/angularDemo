@@ -1,4 +1,6 @@
-/* body
-{
-	background-color: green;
-} */
+.invalid-input {
+	border-left: 8px solid #f95d5d;
+}
+.valid-input {
+	border-left: 8px solid green;
+}

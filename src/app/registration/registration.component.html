@@ -1,3 +1,56 @@
-<p>
-  footer
-</p>
+<div class="container">
+	<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+		<h2 align="center">Registration Form</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="fname">First Name:</label>
+					<input type="text" formControlName="fname" [ngClass]="{'invalid-input': submitted && f.fname.errors, 'valid-input':submitted && !f.fname.errors}" id="fname" class="form-control">
+					<div *ngIf="submitted && f.fname.errors" >
+						<div *ngIf="f.fname.errors.required">
+							First name is required.
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="text" formControlName="email" [ngClass]="{'invalid-input': submitted && f.email.errors, 'valid-input': submitted && !f.email.errors}" id="email" class="form-control">
+					<div *ngIf="submitted && f.email.errors">
+						<div *ngIf="f.email.errors.required">Email is required.</div>
+						<div *ngIf="f.email.errors.email">Please insert a valid email.</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="lname">Last Name:</label>
+					<input type="text" formControlName="lname" [ngClass]="{'invalid-input': submitted && f.lname.errors, 'valid-input': submitted && !f.lname.errors}" id="lname" class="form-control">
+					<div *ngIf="submitted && f.lname.errors">
+						<div *ngIf="f.lname.errors.required">Last Name is required.</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="phone">Phone Number:</label>
+					<input type="text" formControlName="phone" [ngClass]="{'invalid-input': submitted && f.phone.errors, 'valid-input': submitted && !f.phone.errors}" id="phone" class="form-control">
+					<div *ngIf="submitted && f.phone.errors">
+						<div *ngIf="f.phone.errors.required">Phone number is required.</div>
+						<div *ngIf="f.phone.errors.pattern">
+							Please insert a valid phone number.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="brief">Brief:</label>
+					<textarea formControlName="brief" [ngClass]="{'invalid-input': submitted && f.brief.errors, 'valid-input': submitted && !f.brief.errors}" id="brief" class="form-control"></textarea>
+					<div *ngIf="submitted && f.brief.errors">
+						<div *ngIf="f.brief.errors.required">Brief is required.</div>
+					</div>
+				</div>
+				<button type="submit" [disabled]="regForm.invalid" class="btn btn-primary" >Submit</button>
+			</div>
+		</div>
+	</form>
+</div>
